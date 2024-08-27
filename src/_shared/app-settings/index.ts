@@ -1,13 +1,12 @@
 import * as gc from "@sg/sg-game-client";
 import configs from "../../configs.json";
 import gameSettings from "../../game-settings.json";
+import AppSettings from "./type";
 
 const appSettings: AppSettings = {
     ...configs,
     gameSettings,
 };
-
-import AppSettings from "./type";
 
 export const getSiteConfig = (gameId: number) => {
     const gameSetting = appSettings.gameSettings[gameId];
