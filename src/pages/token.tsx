@@ -57,7 +57,7 @@ const Index = () => {
                         Get Token
                     </Button>
                     <div>
-                        <Link to={`/?token=${token}&ref=d_direct`}>Demo page: {`/?token=${token}&ref=d_direct`} </Link>
+                        <Link to={`/demo/?token=${token}&ref=d_direct`}>Demo page: {`demo/?token=${token}&ref=d_direct`} </Link>
                     </div>
                 </Container>
             </div>
