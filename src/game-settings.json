@@ -1,0 +1,44 @@
+{
+    "1": {
+        "id": 1,
+        "gameName": "bigsmall",
+        "name": "BigSmall",
+        "namespaces": ["BigSmall"],
+        "durations": {
+            "wholeRound": 37,
+            "lockingBet": 5,
+            "placingBet": 30,
+            "generatingResult": 1,
+            "showingResult": 6,
+            "startRound": 2
+        },
+        "numberOfRoundHistory": 100,
+        "websocket": {
+            "proxyPath": "bigsmall",
+            "route": "bigsmall"
+        },
+        "mainObserverNamespace": "BigSmall",
+        "storagePrefixKey": "BigSmall"
+    },
+    "2": {
+        "id": 2,
+        "gameName": "SeDie",
+        "name": "SeDie",
+        "namespaces": ["SeDie"],
+        "durations": {
+            "wholeRound": 39,
+            "lockingBet": 5,
+            "placingBet": 30,
+            "generatingResult": 1,
+            "showingResult": 6,
+            "startRound": 2
+        },
+        "numberOfRoundHistory": 100,
+        "websocket": {
+            "proxyPath": "sedie",
+            "route": "sedie"
+        },
+        "mainObserverNamespace": "SeDie",
+        "storagePrefixKey": "Sedie"
+    }
+}
