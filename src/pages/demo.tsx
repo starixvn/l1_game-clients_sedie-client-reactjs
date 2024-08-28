@@ -1,6 +1,5 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import i18next from "i18next";
-import { observer } from "observer";
 import React from "react";
 import Container from "react-bootstrap/Container";
 import { I18nextProvider } from "react-i18next";
@@ -22,7 +21,6 @@ i18next.init({
     },
 });
 
-@observer("default")
 class Demo extends React.Component<any, any> {
     render() {
         const { token } = this.props;

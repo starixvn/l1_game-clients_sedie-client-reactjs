@@ -1,7 +1,8 @@
 import * as gc from "@sg/sg-game-client";
-import { makeAutoObservable, reaction } from "mobx";
+import * as mobx from "mobx";
 import * as Observer from "observer";
 import "reflect-metadata";
+import { getSiteConfig } from "../../_shared/app-settings";
 
 interface Languages {
     [key: string]: any;
@@ -24,7 +25,7 @@ export function startGame(
     const container = gc.getContainer(containerOptions);
     const observerContainer = gc.buildObserverContainer(container);
 
-    Observer.configure({ [gameName]: { mobx: { reaction }, container: observerContainer } });
+    Observer.configure({ [gameName]: { mobx, container: observerContainer } });
     console.log("container - gameName", container, gameName);
 
     return container;
@@ -34,7 +35,6 @@ export function getSharedContainer(siteConfigs: gc.Configs.SiteConfigs) {
     const containerOptions: gc.IContainerOptions = {
         onContainerCreated: (container) => {
             container.bind(gc.Configs.SiteConfigs).toConstantValue(siteConfigs);
-            container.bind("makeAutoObservable").toFunction(makeAutoObservable);
         },
         enabledFeatures: [
             gc.Player.FEATURE_NAME,
@@ -48,3 +48,5 @@ export function getSharedContainer(siteConfigs: gc.Configs.SiteConfigs) {
 
     return gc.getContainer(containerOptions);
 }
+
+export const sharedContainer = getSharedContainer(getSiteConfig(2));

@@ -8,7 +8,7 @@ import SeDie from "../games/sedie/page";
 import LiveGame from "../live-game/live-game";
 import { ILobbyProps, ILobbyStates } from "./type";
 
-////
+//
 @observer
 class Lobby extends Component<ILobbyProps, ILobbyStates> {
     constructor(props: any) {
@@ -22,16 +22,19 @@ class Lobby extends Component<ILobbyProps, ILobbyStates> {
 
     componentDidMount() {
         const { isAuthorized } = this.state;
+
         console.log("sso--------");
         this.sso();
     }
 
     @handle(gc.Auth.AuthHandlers.SSO)
     sso() {
-        return new URLSearchParams(globalThis?.location?.search);
+        return new URLSearchParams(window?.location?.search);
     }
 
-    @render(gc.Auth.AuthStore, (store) => store.isAuthorized)
+    @render(gc.Auth.AuthStore, (store) => store.isAuthorized, {
+        fireImmediately: true,
+    })
     openGame(isAuthorized: boolean) {
         console.log("openGame----------------", isAuthorized);
         if (isAuthorized) {

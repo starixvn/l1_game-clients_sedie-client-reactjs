@@ -1,11 +1,8 @@
 import * as gc from "@sg/sg-game-client";
-import { render } from "observer";
+import { observer, render } from "observer";
+import React from "react";
 import { Col, Container, Row } from "react-bootstrap";
-import {
-    IPropsObserver,
-    IStatesObserver,
-    ObserverComponent,
-} from "../../../_shared/commom-components/observer-component/observer-component";
+import { IStatesObserver } from "../../../_shared/commom-components/observer-component/observer-component";
 import Style from "../sedie.module.scss";
 import { SeDieChoices } from "../type";
 
@@ -16,12 +13,11 @@ export interface ISeDieBetOptionsStates extends IStatesObserver {
     userBetPercentage: gc.GameServiceMessage.UserBetPercentage;
     betPercentage: gc.GameServiceMessage.BetPercentage;
 }
-
-export default class SeDieBetOptions extends ObserverComponent<IPropsObserver, ISeDieBetOptionsStates> {
-    constructor(props: IPropsObserver) {
+@observer("SeDie")
+export default class SeDieBetOptions extends React.Component {
+    constructor(props: any) {
         super(props);
         this.state = {
-            dispose: null,
             roundOdds: {},
             ownBets: {},
             totalBets: {},
@@ -69,10 +65,11 @@ export default class SeDieBetOptions extends ObserverComponent<IPropsObserver, I
                             );
                         })}
                     </Row>
-                    {odds && Object.keys(odds)?.forEach((choice) => {
-                        console.log("choice: ", choice);
-                        console.log("odds[choice]", odds[choice]);
-                    })}
+                    {odds &&
+                        Object.keys(odds)?.forEach((choice) => {
+                            console.log("choice: ", choice);
+                            console.log("odds[choice]", odds[choice]);
+                        })}
                 </Container>
             </div>
         );
