@@ -25,7 +25,8 @@
         "build": "react-scripts build",
         "test": "react-scripts test",
         "eject": "react-scripts eject",
-        "start-debug": "set DEBUG=true && react-scripts start"
+        "start-debug": "set DEBUG=true && react-scripts start",
+        "linkToSGGameClient": "yarn link @sg/sg-game-client"
     },
     "eslintConfig": {
         "extends": [
